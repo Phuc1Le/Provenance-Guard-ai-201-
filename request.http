@@ -1,0 +1,78 @@
+### Clearly AI-generated (should score high)
+POST http://127.0.0.1:5000/submit
+Content-Type: application/json
+
+{
+    "user_id": "alice",
+    "text": "Artificial intelligence represents a transformative paradigm shift in modern society. It is important to note that while the benefits of AI are numerous, it is equally essential to consider the ethical implications. Furthermore, stakeholders across various sectors must collaborate to ensure responsible deployment."
+}
+
+###
+
+### Clearly human-written (should score low)
+POST http://127.0.0.1:5000/submit
+Content-Type: application/json
+
+{
+    "user_id": "alice",
+    "text": "In today’s fast-paced digital landscape, artificial intelligence has become an arduous tool for businesses looking to streamline their operations. By harnessing the power of machine learning, organizations can delve into complex data sets and foster unprecedented innovation. It is important to note that while the benefits cannot be overstated, companies must carefully balance these advancements with human oversight."
+}
+
+###
+
+### Borderline: formal human writing (may score mid-high on stylometrics)
+POST http://127.0.0.1:5000/submit
+Content-Type: application/json
+
+{
+    "user_id": "alice",
+    "text": "Oliver was frightened at the sight of so many gentlemen, which made him tremble: and the beadle gave him another tap behind, which made him cry. These two causes made him answer in a very low and hesitating voice; whereupon a gentleman in a white waistcoat said he was a fool. Which was a capital way of raising his spirits, and putting him quite at his ease."
+}
+###
+
+### Borderline: lightly edited AI output (should ideally score mid-range)
+POST http://127.0.0.1:5000/submit
+Content-Type: application/json
+
+{
+    "user_id": "alice",
+    "text": "I've been thinking a lot about remote work lately. There are genuine tradeoffs — flexibility and no commute on one side, isolation and blurred work-life boundaries on the other. Studies show productivity varies widely by individual and role type."
+}
+
+###
+
+### Drug use essay (user: phuc)
+POST http://127.0.0.1:5000/submit
+Content-Type: application/json
+
+{
+    "user_id": "phuc",
+    "text": "Drug use among young people is a serious issue that can affect their health, education, and future opportunities. Teenagers may feel pressured by friends, curiosity, or stress to experiment with drugs without fully understanding the risks. Even occasional use can lead to poor decision-making and negatively impact school performance and relationships. The effects of drug use can be both immediate and long-term. Some substances impair judgment and coordination, increasing the risk of accidents and injuries. Continued use may contribute to physical and mental health problems, make it harder to achieve personal goals, and, for some individuals, lead to dependence. Preventing drug use requires support from families, schools, and communities. Honest conversations about the risks, access to healthy activities, and encouragement to seek help when facing stress or emotional challenges can make a meaningful difference. By working together, society can help young people make informed choices and build healthier futures."
+}
+
+###
+
+### Professor absence email (expect high AI score)
+POST http://127.0.0.1:5000/submit
+Content-Type: application/json
+
+{
+    "user_id": "phuc",
+    "text": "Dear Professor, I hope you are doing well. I am writing to let you know that I am feeling unwell and would like to request permission to take the day off from class today so that I can rest and recover. I apologize for any inconvenience this may cause. I will make sure to catch up on any material or assignments I miss during my absence. Thank you for your understanding. I appreciate your consideration and hope to return to class as soon as I am feeling better. Sincerely, Phuc"
+}
+
+###
+
+### Appeal — paste a post_id from a /submit response above
+POST http://127.0.0.1:5000/appeal
+Content-Type: application/json
+
+{
+    "content_id": "bf5cbb6d-8059-4a68-8f21-346b2a121bf7",
+    "creator_reasoning": "I asked an AI to write this"
+}
+
+###
+
+### Audit log
+GET http://127.0.0.1:5000/log
